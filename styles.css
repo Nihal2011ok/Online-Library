@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#book-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.book-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
