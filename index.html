@@ -5,56 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Library</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Online Library</h1>
+        <div id="user-section">
+            <span id="user-name"></span>
+            <button id="login-btn">Login</button>
+            <button id="logout-btn" style="display: none;">Logout</button>
+        </div>
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌓</button>
+    </header>
+    <div class="container">
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search for books...">
-            <select id="category-select">
-                <option value="">All Categories</option>
+            <input type="text" id="search-input" placeholder="Search for books..." aria-label="Search for books">
+            <select id="category-select" multiple aria-label="Select categories">
                 <option value="Fiction">Fiction</option>
                 <option value="Non-fiction">Non-fiction</option>
                 <option value="Science">Science</option>
                 <option value="History">History</option>
             </select>
-            <select id="sort-select">
+            <div id="rating-filter">
+                <label for="min-rating">Min Rating:</label>
+                <input type="number" id="min-rating" min="1" max="5" value="1">
+                <label for="max-rating">Max Rating:</label>
+                <input type="number" id="max-rating" min="1" max="5" value="5">
+            </div>
+            <select id="sort-select" aria-label="Sort books">
                 <option value="title">Sort by Title</option>
                 <option value="author">Sort by Author</option>
                 <option value="year">Sort by Year</option>
+                <option value="rating">Sort by Rating</option>
             </select>
         </div>
         <div class="add-book-container">
             <h2>Add New Book</h2>
             <form id="add-book-form">
-                <input type="text" id="title-input" placeholder="Title" required>
-                <input type="text" id="author-input" placeholder="Author" required>
-                <input type="number" id="year-input" placeholder="Year" required>
-                <select id="category-input" required>
+                <input type="text" id="title-input" placeholder="Title" required aria-label="Book title">
+                <input type="text" id="author-input" placeholder="Author" required aria-label="Book author">
+                <input type="number" id="year-input" placeholder="Year" required aria-label="Publication year">
+                <select id="category-input" required aria-label="Book category">
                     <option value="">Select Category</option>
                     <option value="Fiction">Fiction</option>
                     <option value="Non-fiction">Non-fiction</option>
                     <option value="Science">Science</option>
                     <option value="History">History</option>
                 </select>
-                <textarea id="description-input" placeholder="Description" required></textarea>
+                <textarea id="description-input" placeholder="Description" required aria-label="Book description"></textarea>
+                <input type="url" id="cover-input" placeholder="Cover Image URL" aria-label="Book cover image URL">
                 <button type="submit">Add Book</button>
             </form>
         </div>
         <div class="book-list-container">
             <h2>Book List</h2>
-            <ul id="book-list"></ul>
-            <div id="pagination"></div>
+            <div id="book-list"></div>
+            <div id="pagination" role="navigation" aria-label="Pagination"></div>
+        </div>
+        <div class="statistics-container">
+            <h2>Library Statistics</h2>
+            <canvas id="category-chart"></canvas>
+            <canvas id="rating-chart"></canvas>
         </div>
     </div>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-labelledby="modal-title">
+            <span class="close" aria-label="Close">&times;</span>
             <h2 id="modal-title"></h2>
+            <img id="modal-cover" alt="Book cover" src="">
             <p id="modal-author"></p>
             <p id="modal-year"></p>
             <p id="modal-category"></p>
             <p id="modal-description"></p>
+            <div id="modal-rating"></div>
+            <div id="modal-reviews"></div>
+            <form id="review-form">
+                <label for="review-text">Add a review:</label>
+                <textarea id="review-text" required></textarea>
+                <label for="review-rating">Rating:</label>
+                <input type="number" id="review-rating" min="1" max="5" required>
+                <button type="submit">Submit Review</button>
+            </form>
         </div>
     </div>
     <script src="script.js"></script>
