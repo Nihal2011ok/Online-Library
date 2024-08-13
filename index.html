@@ -7,10 +7,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Basic Online Library</h1>
-    <input type="text" id="search-input" placeholder="Search for books...">
-    <ul id="book-list"></ul>
-
+    <div class="container">
+        <h1>Online Library</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search for books...">
+        </div>
+        <div class="add-book-container">
+            <h2>Add New Book</h2>
+            <form id="add-book-form">
+                <input type="text" id="title-input" placeholder="Title" required>
+                <input type="text" id="author-input" placeholder="Author" required>
+                <input type="number" id="year-input" placeholder="Year" required>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+        <div class="book-list-container">
+            <h2>Book List</h2>
+            <ul id="book-list"></ul>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
