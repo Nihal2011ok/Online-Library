@@ -11,6 +11,18 @@
         <h1>Online Library</h1>
         <div class="search-container">
             <input type="text" id="search-input" placeholder="Search for books...">
+            <select id="category-select">
+                <option value="">All Categories</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Non-fiction">Non-fiction</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+            </select>
+            <select id="sort-select">
+                <option value="title">Sort by Title</option>
+                <option value="author">Sort by Author</option>
+                <option value="year">Sort by Year</option>
+            </select>
         </div>
         <div class="add-book-container">
             <h2>Add New Book</h2>
@@ -18,12 +30,31 @@
                 <input type="text" id="title-input" placeholder="Title" required>
                 <input type="text" id="author-input" placeholder="Author" required>
                 <input type="number" id="year-input" placeholder="Year" required>
+                <select id="category-input" required>
+                    <option value="">Select Category</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-fiction">Non-fiction</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                </select>
+                <textarea id="description-input" placeholder="Description" required></textarea>
                 <button type="submit">Add Book</button>
             </form>
         </div>
         <div class="book-list-container">
             <h2>Book List</h2>
             <ul id="book-list"></ul>
+            <div id="pagination"></div>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-author"></p>
+            <p id="modal-year"></p>
+            <p id="modal-category"></p>
+            <p id="modal-description"></p>
         </div>
     </div>
     <script src="script.js"></script>
